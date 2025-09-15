@@ -1,0 +1,33 @@
+<div class="sidebar">
+    <!-- Profile -->
+    <div class="profile">
+        <img src="assets/images/userpic.jpeg" alt="User" />
+        <div>
+            <h2>Mike Manson</h2>
+            <p>iamkiran&#64;gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <ul class="menu">
+        <li *ngFor="let item of menuItems" [routerLink]="item.route" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <span>{{ item.icon }} {{ item.label }}</span>
+            <span *ngIf="item.badge" class="badge">{{ item.badge }}</span>
+        </li>
+    </ul>
+
+    <!-- Folders -->
+    <div class="folders">
+        <div class="folder-header">
+            <h3>Folders</h3>
+            <button>Add</button>
+        </div>
+        <ul>
+            <li *ngFor="let folder of folders">
+                <span class="dot" [ngStyle]="{ 'background-color': folder.color }"></span>
+                {{ folder.name }}
+            </li>
+        </ul>
+    </div>
+</div>

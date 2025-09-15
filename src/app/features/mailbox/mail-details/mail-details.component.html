@@ -1,0 +1,55 @@
+ <div class="mail-toolbar">
+        <div class="actions">
+            <button title="Reply">↩️</button>
+            <button title="Reply All">🔁</button>
+            <button title="Move to">📂</button>
+            <button title="Delete">🗑️</button>
+        </div>
+
+        <div class="pagination">
+            <span class="count">{{ pagination + 1 }}/{{ mails.length }}</span>
+            <button title="Previous" (click)="previous()">◀</button>
+            <button title="Next" (click)="next()">▶</button>
+        </div>
+    </div>
+<div class="email-container" *ngIf="mail">
+   
+
+    <!-- Header -->
+    <div class="header">
+        <img [src]="mail.avatar" alt="Profile" class="profile" />
+        <div class="info">
+            <div class="name">{{ mail.sender }}</div>
+            <div class="role">{{ mail.subject }}</div>
+            <div class="email">{{ mail.sender | lowercase }}&#64;gmail.com</div>
+        </div>
+    </div>
+
+    <!-- Time -->
+    <div class="time">{{ mail.time }}</div>
+
+    <!-- Message -->
+    <div class="message">
+        <div class="title">Hi Mike,</div>
+        <div class="body">{{ mail.message }}</div>
+    </div>
+
+    <!-- Attachments -->
+    <div class="attachments" *ngIf="mail.attachments?.length">
+        <div class="title">📎 {{ mail.attachments.length }} Attachments</div>
+        <div class="files">
+            <div class="file" *ngFor="let file of mail.attachments">
+                <img [src]="file" alt="Attachment" />
+            </div>
+        </div>
+        <div class="download">
+            <button (click)="downloadAttachments(mail.attachments)">Download</button>
+            <span>{{ (mail.attachments.length * 1.4).toFixed(1) }} mb total</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <input type="text" placeholder="Type Message..." />
+    </div>
+</div>

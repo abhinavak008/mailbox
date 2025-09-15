@@ -1,0 +1,27 @@
+<div class="inbox">
+    <div class="mail-list">
+        <div class="search-box">
+            <span class="icon">🔍</span>
+            <input type="search" placeholder="Search" [formControl]="searchControl" />
+        </div>
+
+        <div class="mail-card" *ngFor="let mail of filteredMails" (click)="selectMail(mail)">
+            <img [src]="mail.avatar" alt="avatar" class="avatar" />
+            <div class="mail-info">
+                <div class="mail-header">
+                    <h3>{{ mail.sender }}</h3>
+                    <span class="time">{{ mail.time }}</span>
+                </div>
+                <p class="subject">{{ mail.subject }}</p>
+                <p class="message">{{ mail.message }}</p>
+                <a *ngIf="mail.attachments?.length>0" href="#" class="attachments">
+                    📎 {{ mail.attachments.length }} Attachments
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mail-details" *ngIf="selectedMail">
+        <app-mail-details [mail]="selectedMail"></app-mail-details>
+    </div>
+</div>

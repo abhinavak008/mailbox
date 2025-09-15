@@ -1,0 +1,13 @@
+/* mailbox.component.scss */
+.mailbox {
+    display: flex;
+    height: 100vh;
+}
+
+.mailbox-content {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
